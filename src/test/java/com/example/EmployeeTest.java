@@ -55,6 +55,27 @@ class EmployeeTest {
         assertEquals(20000, employee.getSalary());
     }
 
+    @Test
+    @DisplayName("Should given paid false when is an new employee")
+    void shouldGivenPaidFalseWhenIsAnNewEmployee() {
+        assertFalse(employee.isPaid());
+    }
+
+    @Test
+    @DisplayName("Sholud given true paid when paid to an employee")
+    void sholudGivenTruePaidWhenPaidToAnEmployee() {
+        employee.setPaid(true);
+        assertTrue(employee.isPaid());
+    }
+
+    @Test
+    @DisplayName("Should given employee information when toSting called")
+    void shouldGivenEmployeeInformationWhenToStingCalled() {
+        String expectedtext= "Employee [id=111, salary=10000.0]";
+        assertEquals(expectedtext,employee.toString());
+    }
+
+
 
 }
 
