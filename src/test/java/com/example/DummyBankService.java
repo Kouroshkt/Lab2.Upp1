@@ -1,6 +1,6 @@
 package com.example;
 
-public class dummyBankService implements BankService {
+public class DummyBankService implements BankService {
     @Override
     public void pay(String id, double amount) {
 
