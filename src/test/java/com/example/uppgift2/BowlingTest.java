@@ -61,5 +61,26 @@ public class BowlingTest {
         assertThat(bowling.score()).isEqualTo(20);
     }
 
+    @Test
+    @DisplayName("Should given 24 if roll_1=10 roll_2=5 roll_3=2")
+    void shouldGiven24IfRoll110Roll25Roll32() {
+        bowling.roll(10);
+        bowling.roll(5);
+        bowling.roll(2);
+        assertThat(bowling.score()).isEqualTo(24);
+    }
+
+    @Test
+    @DisplayName("should given 44 after 6 roll")
+    void shouldGiven44After6Roll() {
+        bowling.roll(10);
+        bowling.roll(5);
+        bowling.roll(2);
+        bowling.roll(5);
+        bowling.roll(5);
+        bowling.roll(5);
+        assertThat(bowling.score()).isEqualTo(44);
+    }
+
 
 }
