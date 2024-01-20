@@ -3,12 +3,14 @@ package com.example.uppgift2;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class BowlingTest {
 
     Bowling bowling = new Bowling();
-
+    int[] scoreTest={10,5,2,5,5,5,5,7,1,10,5,5,2,1,10,2,3,3};
     @Test
     @DisplayName("Given 0 when the game has not started")
     void given0WhenTheGameHasNotStarted() {
@@ -64,32 +66,48 @@ public class BowlingTest {
     @Test
     @DisplayName("Should given 24 if roll_1=10 roll_2=5 roll_3=2")
     void shouldGiven24IfRoll110Roll25Roll32() {
-        bowling.roll(10);
-        bowling.roll(5);
-        bowling.roll(2);
+        for (int i = 0; i < 3; i++) {
+            bowling.roll(scoreTest[i]);
+        }
         assertThat(bowling.score()).isEqualTo(24);
     }
 
     @Test
     @DisplayName("should given 44 after 6 roll")
     void shouldGiven44After6Roll() {
-        bowling.roll(10);
-        bowling.roll(5);
-        bowling.roll(2);
-        bowling.roll(5);
-        bowling.roll(5);
-        bowling.roll(5);
+        for (int i = 0; i < 6; i++) {
+            bowling.roll(scoreTest[i]);
+        }
         assertThat(bowling.score()).isEqualTo(44);
     }
 
     @Test
     @DisplayName("It shows the frame number")
     void itShowsTheFrameNumber() {
-        bowling.roll(4);
-        bowling.roll(3);
-        bowling.roll(10);
-        bowling.roll(6);
-        bowling.roll(1);
+        for (int i = 0; i < 5; i++) {
+            bowling.roll(scoreTest[i]);
+        }
         assertThat(bowling.frame).isEqualTo(3);
     }
+
+    @Test
+    @DisplayName("Should have not bonus on frame 9")
+    void shouldHaveNotBonusOnFrame9() {
+        for (int i = 0; i < 15; i++) {
+            bowling.roll(scoreTest[i]);
+        }
+        assertThat(bowling.spare).isFalse();
+        assertThat(bowling.strike).isFalse();
+    }
+
+    @Test
+    @DisplayName("Show the end of the game")
+    void showTheEndOfTheGame() {
+        for (int i = 0; i < 18; i++) {
+            bowling.roll(scoreTest[i]);
+        }
+        assertThat(bowling.endGame).isTrue();
+    }
+
+
 }

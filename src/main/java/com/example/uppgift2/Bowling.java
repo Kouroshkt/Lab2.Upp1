@@ -10,6 +10,7 @@ public class Bowling {
     int frame;
     int rollInFrame1;
     int rollInFrame2;
+    boolean endGame;
 
 
     public int score() {
@@ -48,6 +49,12 @@ public class Bowling {
             rollInFrame1 = 0;
             rollInFrame2 = 0;
             frame++;
+            if(frame==10)endGame=true;
+        }
+        if ((spare || strike) && frame == 9) {
+            strike = false;
+            spare = false;
+            rollInFrame=-1;
         }
     }
 }
