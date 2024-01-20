@@ -5,6 +5,8 @@ public class Bowling {
     int knockDownPinPlayer;
     int score;
     boolean spare;
+    boolean strike;
+    int rollInFrame;
 
 
     public int score() {
@@ -12,9 +14,11 @@ public class Bowling {
     }
 
     public void roll(int knockDownPinPlayer) {
-        score=knockDownPinPlayer+score;
+        rollInFrame++;
+        score = knockDownPinPlayer + score;
         playerScore = score;
-        if (score==10) spare=true;
+        if (score == 10 && rollInFrame == 1) strike = true;
+        if (score == 10 && rollInFrame == 2) spare = true;
     }
 
 }

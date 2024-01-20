@@ -38,11 +38,20 @@ public class BowlingTest {
     }
 
     @Test
-    @DisplayName("Given a spare when have 10 score on two rolls")
+    @DisplayName("Given a spare when have 10 score on two rolls in a frame")
     void givenASpareWhenHave10ScoreOnTwoRolls() {
         bowling.roll(4);
         bowling.roll(6);
         assertThat(bowling.spare).isTrue();
+    }
+
+    @Test
+    @DisplayName("Given a strike when have 10 score on first roll in a frame")
+    void givenAStrikeWhenHave10ScoreOnFirstRollInAFrame() {
+        bowling.roll(10);
+        assertThat(bowling.strike).isTrue();
+
+        
     }
 
 
