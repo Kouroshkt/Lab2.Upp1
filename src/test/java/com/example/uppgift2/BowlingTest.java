@@ -82,5 +82,14 @@ public class BowlingTest {
         assertThat(bowling.score()).isEqualTo(44);
     }
 
-
+    @Test
+    @DisplayName("It shows the frame number")
+    void itShowsTheFrameNumber() {
+        bowling.roll(4);
+        bowling.roll(3);
+        bowling.roll(10);
+        bowling.roll(6);
+        bowling.roll(1);
+        assertThat(bowling.frame).isEqualTo(3);
+    }
 }

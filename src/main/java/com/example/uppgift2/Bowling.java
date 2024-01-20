@@ -12,20 +12,18 @@ public class Bowling {
     int rollInFrame2;
 
 
-
     public int score() {
         return playerScore;
     }
 
     public void roll(int knockDownPinPlayer) {
         rollInFrame++;
-        if (!onFrame){
-            rollInFrame1=knockDownPinPlayer;
-            onFrame=true;
-        }
-        else if (onFrame){
-            rollInFrame2=knockDownPinPlayer;
-            onFrame=false;
+        if (!onFrame) {
+            rollInFrame1 = knockDownPinPlayer;
+            onFrame = true;
+        } else {
+            rollInFrame2 = knockDownPinPlayer;
+            onFrame = false;
         }
         if (spare) {
             knockDownPinPlayer *= 2;
@@ -39,15 +37,18 @@ public class Bowling {
 
         if (rollInFrame1 == 10 && rollInFrame == 1) {
             strike = true;
-            rollInFrame = 0;
-            frame++;
+            rollInFrame = 2;
+            onFrame = false;
 
-        } else if (rollInFrame1+rollInFrame2 == 10 && rollInFrame == 2) {
+        } else if (rollInFrame1 + rollInFrame2 == 10) {
             spare = true;
+        }
+        if (rollInFrame == 2) {
             rollInFrame = 0;
+            rollInFrame1 = 0;
+            rollInFrame2 = 0;
             frame++;
         }
     }
-
 }
 
