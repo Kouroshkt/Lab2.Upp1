@@ -1,6 +1,5 @@
 package com.example.uppgift2;
 
-import org.assertj.core.api.AbstractBigDecimalAssert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -11,27 +10,25 @@ public class BowlingTest {
     Bowling bowling = new Bowling();
 
     @Test
-    @DisplayName("Given 0-0 when the game has not started")
+    @DisplayName("Given 0 when the game has not started")
     void given0WhenTheGameHasNotStarted() {
-        assertThat(bowling.score()).isEqualTo("0-0");
+        assertThat(bowling.score()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("Given 1-0 when player one knock down one pin")
-    void given1WhenPlayerOneKnockDownOnePin() {
-        bowling.knockDownPinOnePlayer=1;
+    @DisplayName("Given 1 when the player knock down one pin")
+    void given1WhenPlayerKnockDownOnePin() {
+        bowling.knockDownPinPlayer =1;
         bowling.playerOneScore();
-        assertThat(bowling.score()).isEqualTo("1-0");
+        assertThat(bowling.score()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("Given 5-5 when the players have 5 score ")
-    void given55WhenThePlayersHave5Score() {
-        bowling.knockDownPinOnePlayer = 5;
-        bowling.knockDownPinTwoPlayer = 5;
+    @DisplayName("Given 5 when the player knock down five pin")
+    void given5WhenThePlayerHave5Score() {
+        bowling.knockDownPinPlayer = 5;
         bowling.playerOneScore();
-        bowling.playerTwoScore();
-        assertThat(bowling.score()).isEqualTo("5-5");
+        assertThat(bowling.score()).isEqualTo(5);
     }
 
 

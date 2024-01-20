@@ -1,25 +1,18 @@
 package com.example.uppgift2;
 
 public class Bowling {
-    int pOneScore;
-    int pTwoScore;
-    int knockDownPinOnePlayer;
-    int knockDownPinTwoPlayer;
+    int playerScore;
+    int knockDownPinPlayer;
 
 
-    public String score() {
-        return pOneScore + "-" + pTwoScore;
+    public int score() {
+        return playerScore;
     }
 
     public void playerOneScore() {
-        for (int i = 0; i < knockDownPinOnePlayer; i++) {
-            pOneScore++;
+        for (int i = 0; i < knockDownPinPlayer; i++) {
+            playerScore++;
         }
     }
 
-    public void playerTwoScore() {
-        for (int i = 0; i < knockDownPinTwoPlayer; i++) {
-            pTwoScore++;
-        }
-    }
 }
