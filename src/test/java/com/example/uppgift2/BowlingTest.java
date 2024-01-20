@@ -37,4 +37,13 @@ public class BowlingTest {
         assertThat(bowling.score()).isEqualTo(8);
     }
 
+    @Test
+    @DisplayName("Given a spare when have 10 score on two rolls")
+    void givenASpareWhenHave10ScoreOnTwoRolls() {
+        bowling.roll(4);
+        bowling.roll(6);
+        assertThat(bowling.spare).isTrue();
+    }
+
+
 }
