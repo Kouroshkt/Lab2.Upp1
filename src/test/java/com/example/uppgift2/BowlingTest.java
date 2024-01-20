@@ -18,18 +18,23 @@ public class BowlingTest {
     @Test
     @DisplayName("Given 1 when the player knock down one pin")
     void given1WhenPlayerKnockDownOnePin() {
-        bowling.knockDownPinPlayer =1;
-        bowling.playerOneScore();
+        bowling.roll(1);
         assertThat(bowling.score()).isEqualTo(1);
     }
 
     @Test
     @DisplayName("Given 5 when the player knock down five pin")
     void given5WhenThePlayerHave5Score() {
-        bowling.knockDownPinPlayer = 5;
-        bowling.playerOneScore();
+        bowling.roll(5);
         assertThat(bowling.score()).isEqualTo(5);
     }
 
+    @Test
+    @DisplayName("Given 8 score after two rolls")
+    void given15ScoreAfterTwoFrames() {
+        bowling.roll(6);
+        bowling.roll(2);
+        assertThat(bowling.score()).isEqualTo(8);
+    }
 
 }
