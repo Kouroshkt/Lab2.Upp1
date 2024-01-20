@@ -50,8 +50,15 @@ public class BowlingTest {
     void givenAStrikeWhenHave10ScoreOnFirstRollInAFrame() {
         bowling.roll(10);
         assertThat(bowling.strike).isTrue();
+    }
 
-        
+    @Test
+    @DisplayName("Should given 20 if roll_1=5 roll_2=5 roll_3=5")
+    void shouldGiven20IfHaveSpareBonusOnThirdRollInFrameNumberTwo() {
+        bowling.roll(5);
+        bowling.roll(5);
+        bowling.roll(5);
+        assertThat(bowling.score()).isEqualTo(20);
     }
 
 
