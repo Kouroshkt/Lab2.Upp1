@@ -10,16 +10,17 @@ import org.mockito.exceptions.base.MockitoException;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
+
 class EmployeesTest {
-    @Mock
-    EmployeeRepository employeeRepository = mock(EmployeeRepository.class);
+    EmployeeRepository employeeRepository = Mockito.mock(EmployeeRepository.class);
     BankService bankService = new DummyBankService();
     Employees employees = new Employees(employeeRepository, bankService);
-    Employee employee1=new Employee("10",1000);
-    Employee employee2=new Employee("20",2000);
-    List<Employee> testEmployees= Arrays.asList(employee1,employee2);
+    Employee employee1 = new Employee("10", 1000);
+    Employee employee2 = new Employee("20", 2000);
+    List<Employee> testEmployees = Arrays.asList(employee1, employee2);
 
     @Test
 
@@ -31,9 +32,10 @@ class EmployeesTest {
     @Test
     @DisplayName("Should given true when paid")
     void shouldGivenTrueWhenPaid() {
+        Mockito.when(employeeRepository.findAll()).thenReturn(testEmployees);
         employees.payEmployees();
-        assertTrue(employee1.isPaid());
-        assertTrue(employee2.isPaid());
+        assertThat(employee1.isPaid()).isTrue();
+        assertThat(employee2.isPaid()).isTrue();
     }
 
 }
