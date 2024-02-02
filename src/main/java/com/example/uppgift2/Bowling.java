@@ -54,7 +54,11 @@ public class Bowling {
             rollInFrame1 = 0;
             rollInFrame2 = 0;
             frame++;
-            if(frame==10)endGame=true;
+            if(frame==10){
+                endGame=true;
+                System.out.println("END GAME");
+                frame=0;
+            }
         }
     }
 
